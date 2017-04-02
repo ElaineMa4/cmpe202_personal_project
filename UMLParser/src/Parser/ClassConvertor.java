@@ -8,4 +8,13 @@ public class ClassConvertor {
 	public ClassConvertor() {
 		
 	}
+	
+	/**
+	 * read class file and turn it into string
+	 * @param path
+	 * @return
+	 */
+	public String readFile(String path) {
+		
+	}
 }
