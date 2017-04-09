@@ -6,18 +6,18 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
-import uml_parser_test1.A;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 
 
 
 public class Test1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ParseException, IOException {
 
-        File[] fileList = getFileList("C:\\Users\\Ma\\workspace\\UMLParser\\src\\uml_parser_test1");
+        File[] fileList = getFileList("E:\\CMPE202\\cmpe202_personal_project\\UMLParser\\src\\uml_parser_test1");
         //A a = new A();
         for(File file : fileList) {
             System.out.println(file.getName());

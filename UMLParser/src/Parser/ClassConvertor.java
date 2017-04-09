@@ -2,8 +2,10 @@ package Parser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
 /**
  * Convert classes into strings
@@ -19,8 +21,10 @@ public class ClassConvertor {
 	 * read class file and turn it into string
 	 * @param path
 	 * @return
+	 * @throws IOException 
+	 * @throws ParseException 
 	 */
-	public String readFile(String path) {
+	public String readFile(String path) throws ParseException, IOException {
 		File file = new File(path);
 		CompilationUnit compilationUnit;
 		String result = "";
