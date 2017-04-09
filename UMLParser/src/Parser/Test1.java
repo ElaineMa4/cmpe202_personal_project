@@ -17,7 +17,7 @@ import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 public class Test1 {
     public static void main(String[] args) throws ParseException, IOException {
 
-        File[] fileList = getFileList("E:\\CMPE202\\cmpe202_personal_project\\UMLParser\\src\\uml_parser_test1");
+        File[] fileList = getFileList("..\\UMLParser\\src\\uml_parser_test1");
         //A a = new A();
         for(File file : fileList) {
             System.out.println(file.getName());
