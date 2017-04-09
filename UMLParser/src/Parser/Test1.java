@@ -20,8 +20,7 @@ public class Test1 {
         File[] fileList = getFileList("..\\UMLParser\\src\\uml_parser_test1");
         //A a = new A();
         for(File file : fileList) {
-            System.out.println(file.getName());
-            //System.out.println(getFile(file.getName()));
+            //System.out.println(file.getName());
             CompilationUnit compilationUnit = JavaParser.parse(file);
             System.out.println(compilationUnit.toString());
         	//Optional<ClassOrInterfaceDeclaration> classA = compilationUnit.getClassByName(compilationUnit);
