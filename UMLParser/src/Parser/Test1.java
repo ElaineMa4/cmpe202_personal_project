@@ -45,6 +45,11 @@ public class Test1 {
     	    	
     }
     
+    /**
+     * 
+     * @param folderPath
+     * @return
+     */
     public static List<File> getAllJavaFiles(String folderPath){
     	File folder = new File(folderPath);
     	File[] files = folder.listFiles();
