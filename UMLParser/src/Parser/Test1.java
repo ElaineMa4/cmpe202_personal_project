@@ -10,7 +10,12 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-/*
+
+
+/**
+ * 1. take input parameters and store them.
+ * 2. parse java code..
+ * 3. output image to local file system.
  * 
  */
 
@@ -19,6 +24,13 @@ public class Test1 {
 	private static String folderPath = "";
 	private static String fileName = "";
 	private static List<File> allJavaFiles;
+	
+	/**
+	 * 
+	 * @param args 1. folder path   2. file name
+	 * @throws ParseException
+	 * @throws IOException
+	 */
 	
     public static void main(String[] args) throws ParseException, IOException {
     	//take parameters
