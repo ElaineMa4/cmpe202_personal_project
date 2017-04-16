@@ -18,6 +18,7 @@ import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 public class Test1 {
 	private static String folderPath = "";
 	private static String fileName = "";
+	private static List<File> allJavaFiles;
 	
     public static void main(String[] args) throws ParseException, IOException {
     	//take parameters
@@ -28,6 +29,11 @@ public class Test1 {
     		System.out.println(" Entered 0 parameters");
     	}
     	
+    	allJavaFiles = getAllJavaFiles(folderPath);
+    	    	
+    }
+    
+    public static List<File> getAllJavaFiles(String folderPath){
     	File folder = new File(folderPath);
     	File[] files = folder.listFiles();
     	List<File> javaFiles = new ArrayList<>();
@@ -36,9 +42,7 @@ public class Test1 {
     			javaFiles.add(files[i]);
     		}
     	}
-    	
-
+    	return javaFiles;
     	
     }
- 
 }
