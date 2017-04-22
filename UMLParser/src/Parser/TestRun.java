@@ -1,3 +1,4 @@
+package Parser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +8,7 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
+//import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
 /**
@@ -35,7 +37,6 @@ public class TestRun {
 		} else if (args.length == 0){
 			System.out.println("entered 0 parameters");
 		}
-		//System.out.println(args[0]);
 		
 		allJavaFiles = getAllJavaFiles(folderPath);
 		allCompilationUnit = new ArrayList<>();
@@ -76,7 +77,6 @@ public class TestRun {
 					}
 				}
 			}
-			
 		}
 		
 		
