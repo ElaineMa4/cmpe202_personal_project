@@ -26,4 +26,8 @@ public class MyClass {
 		this.implementFrom = implementFrom;
 	}
 	
+//	public String toString(){
+//		return 
+//	}
+	
 }

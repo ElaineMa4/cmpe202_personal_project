@@ -75,9 +75,19 @@ public class TestRun {
 						currentClass.getImplementFrom().add(eachType.getNameAsString());
 					}
 				}
-			}
-			
+			}			
 		}
+		
+		
+		for(String key : classMap.keySet()){
+			System.out.print(key + " extends " + classMap.get(key).getExtendsFrom());
+			for(String name : classMap.get(key).getImplementFrom()){
+				System.out.print(key + " implements " + name); 
+			}
+			System.out.println();
+		}
+		
+		//2.get variables from the each class
 		
 		
 	}
@@ -98,5 +108,7 @@ public class TestRun {
 		}
 		return javaFiles;
 	}
+	
+
 	
 }
