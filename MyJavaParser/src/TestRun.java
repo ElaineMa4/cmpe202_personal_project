@@ -5,6 +5,7 @@ import java.util.*;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
@@ -99,10 +100,8 @@ public class TestRun {
 				for(BodyDeclaration member : members){
 					if(member instanceof FieldDeclaration){
 						FieldDeclaration myType = (FieldDeclaration) member;
-						// get modifier
-						for(int i = 0; i < myType.getModifiers().size(); i++){
+						// get modifier  
 							System.out.println(myType.getModifiers().toString());
-						}
 						// get each variable
 						List<VariableDeclarator> varFields = myType.getVariables();
 						//System.out.println(varFields.size());
