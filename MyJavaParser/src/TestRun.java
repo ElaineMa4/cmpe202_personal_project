@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -9,6 +8,7 @@ import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
@@ -83,14 +83,24 @@ public class TestRun {
 		}
 		
 		for(String key : classMap.keySet()){
-			System.out.print(key + " extends " + classMap.get(key).getExtendsFrom());
-			for(String name : classMap.get(key).getImplementFrom()){
-				System.out.print(key + " implements " + name); 
+			boolean haveExtendsOrImplements = false;
+			if(!classMap.get(key).getExtendsFrom().isEmpty()){
+				System.out.print(key + " extends " + classMap.get(key).getExtendsFrom());
+				haveExtendsOrImplements = true;
 			}
-			System.out.println();
+			for(String name : classMap.get(key).getImplementFrom()){
+				if(!classMap.get(key).getImplementFrom().isEmpty()){
+					haveExtendsOrImplements = true;
+				}
+				System.out.print(key + " implements " + name); 
+				
+			}
+			if(haveExtendsOrImplements){
+				System.out.println();
+			}
 		}
 		
-		//2.get variables from the each class
+		//2.get variables and methods from each class
 		for(CompilationUnit unit : allCompilationUnit ){
 			List<TypeDeclaration<?>> varTypes = unit.getTypes();
 			//MyVariable currentVariable;
@@ -98,6 +108,17 @@ public class TestRun {
 			for(TypeDeclaration  typeDeclaration :varTypes){
 				List<BodyDeclaration> members = typeDeclaration.getMembers();
 				for(BodyDeclaration member : members){
+					//get method name
+					if(member instanceof MethodDeclaration){
+						MethodDeclaration method = (MethodDeclaration) member;
+						System.out.print("Methods: " + method.getModifiers() + " " + method.getType() + " "+ method.getName());
+						
+						for(int i = 0; i < method.getParameters().size(); i++){
+							System.out.print(method.getParameter(i) + " ");
+						}
+						System.out.println();												
+					}					
+					
 					if(member instanceof FieldDeclaration){
 						FieldDeclaration myType = (FieldDeclaration) member;
 						// get modifier  
@@ -111,10 +132,8 @@ public class TestRun {
 					}
 				}
 			}
-			System.out.println(); 
-			
-		}
-		
+			System.out.println(); 			
+		}		
 	}
 	
 	/**
@@ -133,7 +152,5 @@ public class TestRun {
 		}
 		return javaFiles;
 	}
-	
-
-	
+		
 }
