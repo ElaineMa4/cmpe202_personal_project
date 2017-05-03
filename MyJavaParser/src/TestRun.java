@@ -5,8 +5,11 @@ import java.util.*;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
+import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
 /**
@@ -20,7 +23,7 @@ public class TestRun {
 	private static String fileName = "";
 	private static List<File> allJavaFiles;
 	private static List<CompilationUnit> allCompilationUnit;
-	
+	//int a;
 	/**
 	 * 
 	 * @param args 1. folder path
@@ -78,7 +81,6 @@ public class TestRun {
 			}			
 		}
 		
-		
 		for(String key : classMap.keySet()){
 			System.out.print(key + " extends " + classMap.get(key).getExtendsFrom());
 			for(String name : classMap.get(key).getImplementFrom()){
@@ -88,7 +90,31 @@ public class TestRun {
 		}
 		
 		//2.get variables from the each class
-		
+		for(CompilationUnit unit : allCompilationUnit ){
+			List<TypeDeclaration<?>> varTypes = unit.getTypes();
+			//MyVariable currentVariable;
+			
+			for(TypeDeclaration  typeDeclaration :varTypes){
+				List<BodyDeclaration> members = typeDeclaration.getMembers();
+				for(BodyDeclaration member : members){
+					if(member instanceof FieldDeclaration){
+						FieldDeclaration myType = (FieldDeclaration) member;
+						// get modifier
+						for(int i = 0; i < myType.getModifiers().size(); i++){
+							System.out.println(myType.getModifiers().toString());
+						}
+						// get each variable
+						List<VariableDeclarator> varFields = myType.getVariables();
+						//System.out.println(varFields.size());
+						for(int i = 0; i < varFields.size(); i++){
+							System.out.println("Fields:" + varFields.get(i).getType() + " " + varFields.get(i).getName());
+						}
+					}
+				}
+			}
+			System.out.println(); 
+			
+		}
 		
 	}
 	

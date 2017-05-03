@@ -4,10 +4,12 @@ public class MyClass {
 	
 	private String extendsFrom;
 	private List<String> implementFrom;
+	private ArrayList<MyVariable> variables;
 	
 	public MyClass() {
 		this.setExtendsFrom("");
 		this.setImplementFrom(new ArrayList<>());
+		this.setVariables(new ArrayList<>());
 	}
 
 	public String getExtendsFrom() {
@@ -25,9 +27,13 @@ public class MyClass {
 	public void setImplementFrom(List<String> implementFrom) {
 		this.implementFrom = implementFrom;
 	}
-	
-//	public String toString(){
-//		return 
-//	}
+
+	public ArrayList<MyVariable> getVariables() {
+		return variables;
+	}
+
+	public void setVariables(ArrayList<MyVariable> variables) {
+		this.variables = variables;
+	}
 	
 }
