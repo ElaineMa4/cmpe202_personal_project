@@ -111,10 +111,12 @@ public class TestRun {
 					//get method name
 					if(member instanceof MethodDeclaration){
 						MethodDeclaration method = (MethodDeclaration) member;
-						System.out.print("Methods: " + method.getModifiers() + " " + method.getType() + " "+ method.getName());
-						
-						for(int i = 0; i < method.getParameters().size(); i++){
-							System.out.print(method.getParameter(i) + " ");
+						if(method.getModifiers().toString().equals("[PUBLIC]")){
+							System.out.print("Methods: " + method.getModifiers() + " " + method.getType() + " "+ method.getName()+ " ");
+						//System.out.println(method.getModifiers().toString());
+							for(int i = 0; i < method.getParameters().size(); i++){
+								System.out.print(method.getParameter(i) + " ");
+							}
 						}
 						System.out.println();												
 					}					
@@ -122,12 +124,14 @@ public class TestRun {
 					if(member instanceof FieldDeclaration){
 						FieldDeclaration myType = (FieldDeclaration) member;
 						// get modifier  
+						if(myType.getModifiers().toString().equals("[PUBLIC]") || myType.getModifiers().toString().equals("[PRIVATE]")) {
 							System.out.println(myType.getModifiers().toString());
 						// get each variable
-						List<VariableDeclarator> varFields = myType.getVariables();
+							List<VariableDeclarator> varFields = myType.getVariables();
 						//System.out.println(varFields.size());
-						for(int i = 0; i < varFields.size(); i++){
-							System.out.println("Fields:" + varFields.get(i).getType() + " " + varFields.get(i).getName());
+							for(int i = 0; i < varFields.size(); i++){
+								System.out.println("Fields:" + varFields.get(i).getType() + " " + varFields.get(i).getName());
+							}
 						}
 					}
 				}
