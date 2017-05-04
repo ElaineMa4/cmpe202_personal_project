@@ -1,16 +1,16 @@
-
+import com.github.javaparser.ast.expr.SimpleName;
+import com.github.javaparser.ast.type.Type;
 
 public class MyVariable {
 	private String modifier;
 	private String type;
 	private String name;
-	private boolean isStatic;
 	
-	public MyVariable(){
-		this.setModifier("");
-		this.setType("");
-		this.setName("");
-		this.setStatic(false);
+	public MyVariable(String mod, String type2, String simpleName ){
+		this.setModifier(mod);
+		this.setType(type2);
+		this.setName(simpleName);
+
 	}
 
 	public String getModifier() {
@@ -36,14 +36,5 @@ public class MyVariable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public boolean isStatic() {
-		return isStatic;
-	}
-
-	public void setStatic(boolean isStatic) {
-		this.isStatic = isStatic;
-	}
-	
 
 }

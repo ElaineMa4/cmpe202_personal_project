@@ -9,7 +9,7 @@ public class MyClass {
 	public MyClass() {
 		this.setExtendsFrom("");
 		this.setImplementFrom(new ArrayList<>());
-		this.setVariables(new ArrayList<>());
+//		this.setVariables(new ArrayList<>());
 	}
 
 	public String getExtendsFrom() {

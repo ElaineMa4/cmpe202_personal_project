@@ -61,7 +61,7 @@ public class TestRun {
 			List<TypeDeclaration<?>> types = cUnit.getTypes();
 			
 			MyClass currentClass;
-
+			// Get extends_from and implements_from for current class
 			for (TypeDeclaration typeDeclaration : types) {
 				if (typeDeclaration instanceof ClassOrInterfaceDeclaration) {
 					ClassOrInterfaceDeclaration classDeclaration = (ClassOrInterfaceDeclaration)typeDeclaration;
@@ -81,7 +81,7 @@ public class TestRun {
 				}
 			}			
 		}
-		
+		// print extends_from and implements_from
 		for(String key : classMap.keySet()){
 			boolean haveExtendsOrImplements = false;
 			if(!classMap.get(key).getExtendsFrom().isEmpty()){
@@ -113,7 +113,6 @@ public class TestRun {
 						MethodDeclaration method = (MethodDeclaration) member;
 						if(method.getModifiers().toString().equals("[PUBLIC]")){
 							System.out.print("Methods: " + method.getModifiers() + " " + method.getType() + " "+ method.getName()+ " ");
-						//System.out.println(method.getModifiers().toString());
 							for(int i = 0; i < method.getParameters().size(); i++){
 								System.out.print(method.getParameter(i) + " ");
 							}
@@ -126,11 +125,12 @@ public class TestRun {
 						// get modifier  
 						if(myType.getModifiers().toString().equals("[PUBLIC]") || myType.getModifiers().toString().equals("[PRIVATE]")) {
 							System.out.println(myType.getModifiers().toString());
-						// get each variable
+							// get each variable
 							List<VariableDeclarator> varFields = myType.getVariables();
-						//System.out.println(varFields.size());
+							//System.out.println(varFields.size());
 							for(int i = 0; i < varFields.size(); i++){
 								System.out.println("Fields:" + varFields.get(i).getType() + " " + varFields.get(i).getName());
+								MyVariable currentVariable = new MyVariable(myType.getModifiers().toString(), varFields.get(i).getType().toString(), varFields.get(i).getName().toString());								
 							}
 						}
 					}
@@ -155,6 +155,5 @@ public class TestRun {
 			}
 		}
 		return javaFiles;
-	}
-		
+	}		
 }
